@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "../components/Header";
 import { PageHeader } from "../components/PageHeader";
+import { addSubmission, flushPending, sendSubmission } from "../lib/contact-form";
+
 
 
 export const Route = createFileRoute("/kontakt")({
@@ -30,12 +32,33 @@ function ContactPage() {
   const [form, setForm] = useState({ name: "", contact: "", message: "" });
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [queued, setQueued] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Po návratu online doodešleme vše, co zůstalo uložené v LocalStorage.
+  useEffect(() => {
+    void flushPending();
+    const onOnline = () => void flushPending();
+    window.addEventListener("online", onOnline);
+    return () => window.removeEventListener("online", onOnline);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!agree) return;
+    if (!agree || sending) return;
+    setSending(true);
+
+    // 1) Vždy uložit lokálně (offline režim)
+    const item = addSubmission(form);
+
+    // 2) Pokusit se odeslat e-mailem přes Web3Forms
+    const ok = await sendSubmission(item);
+
+    setSending(false);
+    setQueued(!ok);
     setSubmitted(true);
   };
+
 
   return (
     <main className="min-h-screen bg-white">
@@ -75,9 +98,14 @@ function ContactPage() {
           {submitted ? (
             <div className="rounded-xl bg-[color:var(--sage-light)] p-6 text-center">
               <p className="font-semibold text-foreground">Děkujeme za zprávu!</p>
-              <p className="mt-2 text-sm text-muted-foreground">Ozveme se vám co nejdříve.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {queued
+                  ? "Zpráva je uložena v zařízení a odešle se automaticky, jakmile budete online."
+                  : "Ozveme se vám co nejdříve."}
+              </p>
             </div>
           ) : (
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <Field label="Jméno" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
               <Field label="Kontakt (e-mail nebo telefon)" value={form.contact} onChange={(v) => setForm({ ...form, contact: v })} />
@@ -96,10 +124,11 @@ function ContactPage() {
               </label>
               <button
                 type="submit"
-                disabled={!agree}
+                disabled={!agree || sending}
                 className="rounded-full bg-[color:var(--brand-red)] px-8 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90 disabled:opacity-50"
               >
-                Odeslat
+                {sending ? "Odesílám…" : "Odeslat"}
+
               </button>
             </form>
           )}
