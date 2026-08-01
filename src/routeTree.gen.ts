@@ -9,61 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AktivityRouteImport } from './routes/aktivity'
-import { Route as CenikRouteImport } from './routes/cenik'
-import { Route as FotogalerieRouteImport } from './routes/fotogalerie'
-import { Route as KontaktRouteImport } from './routes/kontakt'
-import { Route as ONasRouteImport } from './routes/o-nas'
-import { Route as ProRodiceRouteImport } from './routes/pro-rodice'
-import { Route as ProjektyRouteImport } from './routes/projekty'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as TheBestForYourChildRouteImport } from './routes/the-best-for-your-child'
 import { Route as TridyRouteImport } from './routes/tridy'
+import { Route as TheBestForYourChildRouteImport } from './routes/the-best-for-your-child'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ProjektyRouteImport } from './routes/projekty'
+import { Route as ProRodiceRouteImport } from './routes/pro-rodice'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as FotogalerieRouteImport } from './routes/fotogalerie'
+import { Route as CenikRouteImport } from './routes/cenik'
+import { Route as AktivityRouteImport } from './routes/aktivity'
+import { Route as IndexRouteImport } from './routes/index'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AktivityRoute = AktivityRouteImport.update({
-  id: '/aktivity',
-  path: '/aktivity',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CenikRoute = CenikRouteImport.update({
-  id: '/cenik',
-  path: '/cenik',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FotogalerieRoute = FotogalerieRouteImport.update({
-  id: '/fotogalerie',
-  path: '/fotogalerie',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KontaktRoute = KontaktRouteImport.update({
-  id: '/kontakt',
-  path: '/kontakt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ONasRoute = ONasRouteImport.update({
-  id: '/o-nas',
-  path: '/o-nas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProRodiceRoute = ProRodiceRouteImport.update({
-  id: '/pro-rodice',
-  path: '/pro-rodice',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjektyRoute = ProjektyRouteImport.update({
-  id: '/projekty',
-  path: '/projekty',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const TridyRoute = TridyRouteImport.update({
+  id: '/tridy',
+  path: '/tridy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TheBestForYourChildRoute = TheBestForYourChildRouteImport.update({
@@ -71,9 +31,49 @@ const TheBestForYourChildRoute = TheBestForYourChildRouteImport.update({
   path: '/the-best-for-your-child',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TridyRoute = TridyRouteImport.update({
-  id: '/tridy',
-  path: '/tridy',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektyRoute = ProjektyRouteImport.update({
+  id: '/projekty',
+  path: '/projekty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProRodiceRoute = ProRodiceRouteImport.update({
+  id: '/pro-rodice',
+  path: '/pro-rodice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FotogalerieRoute = FotogalerieRouteImport.update({
+  id: '/fotogalerie',
+  path: '/fotogalerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CenikRoute = CenikRouteImport.update({
+  id: '/cenik',
+  path: '/cenik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AktivityRoute = AktivityRouteImport.update({
+  id: '/aktivity',
+  path: '/aktivity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -175,67 +175,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/aktivity': {
-      id: '/aktivity'
-      path: '/aktivity'
-      fullPath: '/aktivity'
-      preLoaderRoute: typeof AktivityRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cenik': {
-      id: '/cenik'
-      path: '/cenik'
-      fullPath: '/cenik'
-      preLoaderRoute: typeof CenikRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/fotogalerie': {
-      id: '/fotogalerie'
-      path: '/fotogalerie'
-      fullPath: '/fotogalerie'
-      preLoaderRoute: typeof FotogalerieRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kontakt': {
-      id: '/kontakt'
-      path: '/kontakt'
-      fullPath: '/kontakt'
-      preLoaderRoute: typeof KontaktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/o-nas': {
-      id: '/o-nas'
-      path: '/o-nas'
-      fullPath: '/o-nas'
-      preLoaderRoute: typeof ONasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pro-rodice': {
-      id: '/pro-rodice'
-      path: '/pro-rodice'
-      fullPath: '/pro-rodice'
-      preLoaderRoute: typeof ProRodiceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projekty': {
-      id: '/projekty'
-      path: '/projekty'
-      fullPath: '/projekty'
-      preLoaderRoute: typeof ProjektyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/tridy': {
+      id: '/tridy'
+      path: '/tridy'
+      fullPath: '/tridy'
+      preLoaderRoute: typeof TridyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/the-best-for-your-child': {
@@ -245,11 +189,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TheBestForYourChildRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tridy': {
-      id: '/tridy'
-      path: '/tridy'
-      fullPath: '/tridy'
-      preLoaderRoute: typeof TridyRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekty': {
+      id: '/projekty'
+      path: '/projekty'
+      fullPath: '/projekty'
+      preLoaderRoute: typeof ProjektyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pro-rodice': {
+      id: '/pro-rodice'
+      path: '/pro-rodice'
+      fullPath: '/pro-rodice'
+      preLoaderRoute: typeof ProRodiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fotogalerie': {
+      id: '/fotogalerie'
+      path: '/fotogalerie'
+      fullPath: '/fotogalerie'
+      preLoaderRoute: typeof FotogalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cenik': {
+      id: '/cenik'
+      path: '/cenik'
+      fullPath: '/cenik'
+      preLoaderRoute: typeof CenikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aktivity': {
+      id: '/aktivity'
+      path: '/aktivity'
+      fullPath: '/aktivity'
+      preLoaderRoute: typeof AktivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

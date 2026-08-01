@@ -4,20 +4,36 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-const root = resolve(import.meta.dirname, "..");
+// import.meta.dirname is unavailable on older Node (e.g. Node 18 on some CI hosts),
+// so derive the script directory from import.meta.url instead.
+const scriptDir = dirname(fileURLToPath(import.meta.url));
+const root = resolve(scriptDir, "..");
 const clientDir = join(root, "dist", "client");
 const serverEntry = join(root, "dist", "server", "index.mjs");
 const outDir = join(root, ".output", "public");
 
 if (!existsSync(serverEntry)) {
-  console.error(`[prerender] Missing server build at ${serverEntry}. Run vite build first.`);
-  process.exit(1);
+  console.warn(
+    `[prerender] No server build at ${serverEntry} — skipping prerender and exporting the client build only.`,
+  );
+  if (existsSync(clientDir)) {
+    await rm(join(root, ".output"), { recursive: true, force: true });
+    await mkdir(outDir, { recursive: true });
+    await cp(clientDir, outDir, { recursive: true });
+    const indexHtml = join(outDir, "index.html");
+    if (existsSync(indexHtml)) {
+      await writeFile(join(outDir, "404.html"), await readFile(indexHtml));
+    }
+    console.log("[prerender] Copied dist/client -> .output/public");
+  }
+  process.exit(0);
 }
 
 const handler = (await import(pathToFileURL(serverEntry).toString())).default;
 const ctx = { waitUntil() {}, passThroughOnException() {} };
+
 
 async function render(path) {
   const res = await handler.fetch(
