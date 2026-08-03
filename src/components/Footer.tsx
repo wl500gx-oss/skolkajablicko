@@ -50,7 +50,10 @@ export function Footer() {
             <h4 className="font-semibold">Kontakt</h4>
             <ul className="mt-2 space-y-2 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin className="text-[color:var(--brand-red)]" size={16} /> <span>K Meteoru 757/16, 503 11 Hradec Králové</span>
+                <MapPin className="text-[color:var(--brand-red)]" size={16} />
+                <Link to="/kontakt" className="hover:text-[color:var(--brand-red)]">
+                  K Meteoru 757/16, 503 11 Hradec Králové
+                </Link>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="text-[color:var(--brand-red)]" size={16} />

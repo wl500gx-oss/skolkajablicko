@@ -123,7 +123,7 @@ function HomePage() {
           </p>
           <Link
             to="/kontakt"
-            className="mt-6 inline-block rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary transition-transform hover:scale-105"
+            className="mt-6 inline-block rounded-full bg-white px-8 py-3 text-sm font-semibold text-[color:var(--brand-red)] transition-transform hover:scale-105"
           >
             Domluvit prohlídku
           </Link>
