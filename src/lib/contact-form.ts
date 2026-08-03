@@ -16,9 +16,9 @@ export const WEB3FORMS_ACCESS_KEY =
 export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 /** Hlavní příjemce zprávy. */
-export const PRIMARY_RECIPIENT = 'radek@smrcka.net';
+export const PRIMARY_RECIPIENT = 'info@skolka-jablicko.cz';
 /** Kopie zprávy (cc). */
-export const CC_RECIPIENTS = ['info@skolka-jablicko.cz'];
+export const CC_RECIPIENTS = ['radek@smrcka.net'];
 
 export const STORAGE_KEY = 'jablicko:contact-submissions';
 
