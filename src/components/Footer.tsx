@@ -50,16 +50,16 @@ export function Footer() {
             <h4 className="font-semibold">Kontakt</h4>
             <ul className="mt-2 space-y-2 text-sm">
               <li className="flex items-center gap-2">
-                <MapPin size={16} /> <span>K Meteoru 757/16, 503 11 Hradec Králové</span>
+                <MapPin className="text-[color:var(--brand-red)]" size={16} /> <span>K Meteoru 757/16, 503 11 Hradec Králové</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} />
+                <Phone className="text-[color:var(--brand-red)]" size={16} />
                 <a href={`tel:${CONTACT_PHONE_HREF}`} className="hover:text-[color:var(--brand-red)]">
                   {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail size={16} />
+                <Mail className="text-[color:var(--brand-red)]" size={16} />
                 <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[color:var(--brand-red)]">
                   {CONTACT_EMAIL}
                 </a>

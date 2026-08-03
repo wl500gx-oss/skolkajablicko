@@ -55,13 +55,13 @@ export function Header() {
               href={`mailto:${CONTACT_EMAIL}`}
               className="flex items-center gap-2 hover:text-[color:var(--brand-red)]"
             >
-              <Mail size={14} /> {CONTACT_EMAIL}
+              <Mail className="text-[color:var(--brand-red)]" size={14} /> {CONTACT_EMAIL}
             </a>
             <a
               href={`tel:${CONTACT_PHONE_HREF}`}
               className="flex items-center gap-2 hover:text-[color:var(--brand-red)]"
             >
-              <Phone size={14} /> {CONTACT_PHONE_DISPLAY}
+              <Phone className="text-[color:var(--brand-red)]" size={14} /> {CONTACT_PHONE_DISPLAY}
             </a>
             <div className="flex items-center gap-3 pt-1">
               <a
