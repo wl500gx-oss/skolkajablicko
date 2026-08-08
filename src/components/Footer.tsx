@@ -49,22 +49,31 @@ export function Footer() {
           <div>
             <h4 className="font-semibold">Kontakt</h4>
             <ul className="mt-2 space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <MapPin className="text-[color:var(--brand-red)]" size={16} />
-                <Link to="/kontakt" className="hover:text-[color:var(--brand-red)]">
-                  K Meteoru 757/16, 503 11 Hradec Králové
+              <li>
+                <Link
+                  to="/kontakt"
+                  className="flex items-center gap-2 text-foreground hover:text-[color:var(--brand-red)]"
+                >
+                  <MapPin className="text-[color:var(--brand-red)]" size={16} />
+                  <span>K Meteoru 757/16, 503 11 Hradec Králové</span>
                 </Link>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="text-[color:var(--brand-red)]" size={16} />
-                <a href={`tel:${CONTACT_PHONE_HREF}`} className="hover:text-[color:var(--brand-red)]">
-                  {CONTACT_PHONE_DISPLAY}
+              <li>
+                <a
+                  href={`tel:${CONTACT_PHONE_HREF}`}
+                  className="flex items-center gap-2 text-foreground hover:text-[color:var(--brand-red)]"
+                >
+                  <Phone className="text-[color:var(--brand-red)]" size={16} />
+                  <span>{CONTACT_PHONE_DISPLAY}</span>
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="text-[color:var(--brand-red)]" size={16} />
-                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[color:var(--brand-red)]">
-                  {CONTACT_EMAIL}
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="flex items-center gap-2 text-foreground hover:text-[color:var(--brand-red)]"
+                >
+                  <Mail className="text-[color:var(--brand-red)]" size={16} />
+                  <span>{CONTACT_EMAIL}</span>
                 </a>
               </li>
             </ul>

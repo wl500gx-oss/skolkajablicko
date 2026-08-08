@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "../components/PageHeader";
 
 
@@ -16,10 +16,10 @@ export const Route = createFileRoute("/cenik")({
 });
 
 const rows: [string, string][] = [
-  ["2 dny v týdnu", "6 800 Kč"],
-  ["3 dny v týdnu", "8 900 Kč"],
-  ["4 dny v týdnu", "10 800 Kč"],
-  ["5 dní v týdnu", "12 400 Kč"],
+  ["2 dny v týdnu", "Na vyžádání"],
+  ["3 dny v týdnu", "Na vyžádání"],
+  ["4 dny v týdnu", "Na vyžádání"],
+  ["5 dní v týdnu", "Na vyžádání"],
 ];
 
 function Page() {
@@ -52,20 +52,18 @@ function Page() {
                     }
                   >
                     <td className="px-6 py-5 text-foreground">{label}</td>
-                    <td className="px-6 py-5 text-right font-semibold text-[color:var(--brand-red)]">
-                      {price}
+                    <td className="px-6 py-5 text-right text-foreground">
+                      <Link
+                        to="/kontakt"
+                        className="transition-all hover:font-semibold hover:text-[color:var(--brand-red)] hover:underline focus:outline-none"
+                      >
+                        {price}
+                      </Link>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-          <div className="mt-8 rounded-2xl bg-[color:var(--sage-light)] px-6 py-6">
-            <p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
-              V ceně je zahrnuta celodenní strava (dopolední svačina, oběd,
-              odpolední svačina), pitný režim a všechny aktivity v rámci
-              programu školky.
-            </p>
           </div>
         </div>
       </section>
